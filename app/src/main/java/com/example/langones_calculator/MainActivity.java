@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
+    //each button corresponds to the number/symbol that will be inputted in the textView
     public void zeroBTN (View view){
         updateText("0");
     }
