@@ -15,10 +15,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        //sets up the display of the textview
         display = findViewById(R.id.input);
         display.setShowSoftInputOnFocus(false);
 
+        //clears the "Enter in a value" text to make way for inputted digits
         display.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -28,12 +29,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
+    //this allows the numbers to be inputted
     private void updateText(String strToAdd){
         String oldStr = display.getText().toString();
         int cursorPos = display.getSelectionStart();
         String leftStr = oldStr.substring(0, cursorPos);
         String rightStr = oldStr.substring(cursorPos);
+        //this statement allows the cursor to input numbers from left to right
         if (getString(R.string.display).equals(display.getText().toString())){
             display.setText(strToAdd);
             display.setSelection(cursorPos + 1);
@@ -112,13 +114,13 @@ public class MainActivity extends AppCompatActivity {
         xp = xp.replaceAll("×", "*");
 
         Expression exp = new Expression(xp);
-
+        //this code does the calculation of the inputted equations
         String answer = String.valueOf(exp.calculate());
 
         display.setText(answer);
         display.setSelection(answer.length());
     }
-
+    //removes all inputted values
     public void clearBTN(View view){
         display.setText("");
     }
